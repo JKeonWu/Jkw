@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script> 
+     // 문제 1) 1~9까지 합을 구하되, 3의 배수를 제외한 합을 구하세요.
+     
+     let sum = 0;
+     let excludeNum = "제외할 3의 배수";
+     for (let i = 0; i < 10; i++ ) {
+      if ( i % 3 == 0){
+        excludeNum += i + " ,";
+        continue;
+      }
+      sum += i; 
+     }
+     console.log(excludeNum + "제외한 합은" + sum + "입니다"); 
+
+     // 문제 2) 1~100까지의 짝수합만을 구하세요.(continue이용)
+     let eSum = 0;
+     for(let i = 0; i < 101; i++) {
+      if (i % 2 == 0) {
+        eSum += i;
+      } else {
+        // 홀수
+        continue;
+        console.log(i); // no-effect 
+      }
+     }
+     document.write(`1부터 100까지 짝수의 합은 : ${eSum}입니다.`);
+
+     // 문제 3) 1부터 누적합을 구하되, 몇까지 더해야 누적합이 1000이 넘어가는지 출력.
+     let sum1 = 0;
+     let cnt = 0;
+     for(let j = 0; j < 1000; j++ ) {
+      sum1 += j;
+      if ( sum1 > 1000) {
+        break;
+      }
+      cnt++; 
+     }
+      document.write(`${cnt}까지 더했을때 누적합이 1000보다 크다. <br>`);
+      document.write(`총합은 ${sum1}입니다.`);
+
+      // while
+      let accumulate = 0;
+      let i = 0;
+      while (accumulate < 1001) {
+        accumulate += i;
+        document.write(`${i}까지 누적 합은 ${accumulate}값이 됩니다.<br>`)
+        i++;
+      }
+    </script>
+</head>
+<body>
+  
+</body>
+</html>

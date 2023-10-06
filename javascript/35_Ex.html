@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 추가문제) 1~45사이의 랜덤한 수를 6개 출력하되, 중복은 허용하지않는다.
+
+splice()를 이용해서 구현하세요. -->
+
+<script>
+  let ranN = new Array(6);
+  let tmp = 0;
+  let tmp2 = 0;
+  
+  for(let i = 0; i < ranN.length; i++) {
+    console.log("i=", i)
+    do{
+      tmp = Math.floor(Math.random() * 45 ) + 1;
+    } while(spl());
+     ranN[i] = tmp;
+  }
+    console.log(ranN);
+
+  function spl(){
+    for(let item of ranN){
+      if(tmp == item){
+        ranN.splice(ranN, 1);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+</script>
+</head>
+<body>
+  
+</body>
+</html>

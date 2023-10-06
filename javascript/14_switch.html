@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+     // 유저에게 숫자를 입력받아서, 짝수인지, 홀수인지 출력
+     // switch 문을 이용해서 작성하세요
+     let num = Number(window.prompt("숫자를 입력하세요."));
+    
+     if (num !== nul11){
+      if(isFinite(num)){
+        // 숫자를 입력했을때
+      
+     // 짝수 : 2로 나누면, 나머지가 0
+     // 홀수 : 2로 나누면, 나머지가 1
+     num =  num % 2;
+
+     let result = "";
+     switch(num) {
+        case 0 : 
+         result ="짝수";
+         break;
+        default:
+         result ="홀수";
+     }
+      
+       document.write(result);
+     }
+     }  else {
+      // 문자를 입력했을 때
+       document.write("취소되었습니다")
+     }   
+     
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

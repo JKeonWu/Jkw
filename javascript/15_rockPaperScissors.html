@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가위 바위 보</title>
+
+</head>
+<body>
+  <h1>가위, 바위, 보</h1>
+  <div class="userInput" >
+      <select id="userSelectVal">
+         <option value="1">가위</option>
+         <option value="2">바위</option>
+         <option value="3">보</option>
+      </select>
+      <input type="button" value="선택" onclick="gameStart()" />
+  </div>
+<table border="1">
+  <tr>
+    <td>User</td>
+    <td>computer</td>
+  </tr>
+  <tr>
+    <td id="user" ></td>
+    <td id="computer" ></td>
+  </tr>
+</table>
+   <div id="result"></div>
+
+   <div>
+    <div>
+      <div></div>
+    </div>
+   </div>
+
+   <script>
+    // 컴퓨터와 유저와의 가위바위보
+    // 컴퓨터 : 랜덤하게 가위(1), 바위(2) ,보(3)를 낸다.
+    // 유저 : select해서 [선택] 버튼 누르면 가위,바위,보를 낸다.
+    // 결과를 출력하고, 승률도 출력한다.
+
+    let win = 0, 
+        draw = 0, 
+        lose = 0;
+        winRate = 0;
+     
+    function gameStart( ) {
+
+     
+
+    let computers = Math.floor(Math.random() * 3) + 1;  
+    let users = Number(document.getElementById("userSelectVal").value);
+    
+    console.log(typeof users);
+    console.log(user, computers);
+    //<img src="image/1.webp" alt"">
+    //테이블에 이미지를 넣어보자
+    let userImg = "";
+    let computerImg = "";
+    switch(users){
+      case 1:
+        userImg ="<img src='image/1.png'>";
+       break; 
+      case 2:
+        userImg ="<img src='image/2.png'>";
+       break; 
+      case 3:
+        userImg ="<img src='image/3.png'>"; 
+       break; 
+    }
+
+    switch(computers){
+      case 1: 
+        computerImg = "<img src='image/1.png'>";
+        break; 
+      case 2: 
+        computerImg = "<img src='image/2.png'>";
+        break;
+      case 3: 
+        computerImg = "<img src='image/3.png'>"; 
+        break;
+    }
+
+    // console.log(document.getElementById("user"));
+    console.log(userImg);
+    document.getElementById("user").innerHTML = userImg;
+    document.getElementById("computer").innerHTML = computerImg;
+
+    //승패 처리
+    // 비기는 경우
+    // 이기는 경우
+    // 지는경우
+    let result="";
+    if (users == computers) {
+        result = "비겼다";
+        // draw = draw + 1; // 첫번째경우
+        draw++;          // 두번째 경우 (2가지경우가잇음)
+    } else if ((users == 1 && computers == 3) || 
+      (users == 2 && computers == 1) ||
+      (users == 3 && computers == 2)
+    ) {
+      result = "졋다";
+      lose++;
+    } else {
+      result = " 이겻다";
+      win++;
+    }
+  document.getElementById("result"). innerHTML = result;
+  document.getElementById("result-total").innerHTML = `${win}승 ${draw}무 ${lose}패`;
+  winRate = win / (win + draw + lose) * 100; // 퍼센트로 계산
+  document.getElementById("winRate").innerHTML = `${Math.round{winRate *10 ) 10 }%`;
+//1 ) 유저가 이기는경우 
+// 유저(가위) 컴퓨터 (보) = 유저승
+// 유저(바위) 컴퓨터 (가위) = 유저승
+// 유저(보) 컴퓨터 (주먹) = 유저승
+//2 ) 유저가 지는경우
+// 유저(주먹) 컴퓨터(가위) = 유저패배
+// 유저(보) 컴퓨터(주먹) = 유저패배
+// 유저(가위) 컴퓨터(보) = 유저패배
+//3 ) 비기는경우
+// 유저(가위) 컴퓨터(가위)
+// 유저(바위) 컴퓨터(바위)
+// 유저(보) 컴퓨터(보)
+
+// 1:주먹 2: 가위 3:보
+
+  //  if(user == 1 && computer == 1){
+  //      result = "무승부"
+  //   }  even if(user ==1 && computer ==2) {
+  //      result = "승리"
+  //   }  even if(user ==1 && computer ==2)
+
+
+    // let users = 유저가 선택한 값;
+    console.log(document.getElementById("userSelectVal").value);
+    console.log(user, computers);
+  }
+ 
+ // 승률 
+// 이, 이 , 졋, 졋, 졋 , 비겻 , 이겻 , 비겻 , 이겻, 졋
+  </script>
+  <div id="vicRate">0승 0무 0패</div>
+  <div id="winRate"></div>
+</body>
+</html>

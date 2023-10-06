@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+     let lotto = new Array(6);
+    let tmp = 0;
+
+    for(let i = 0; i < lotto.length; i++) {
+      console.log("i=", i);
+      do {
+        tmp = Math.floor(Math.random() * 45) + 1; 
+      } while(isDuplicate());
+        lotto[i] = tmp;
+    }
+
+     console.log(lotto);
+    // 1-2) 같은 수가 나오면 다시 뽑자. 
+    function isDuplicate(){
+      for (let item of lotto){
+        console.log(tmp, item);
+        if (tmp == item) {
+          // 중복된 수가 있다.
+          return true; // 중복이 있는 경우에, 반환값(true)을 가지고, 함수를 호출한 곳으로 되돌아감.
+        }
+      }
+      return false;   // 중복이 없는 경우에, 반환값을 가지고 함수를 호출한 곳으로 되돌아감.
+    }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

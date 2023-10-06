@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>break와 continue</title>
+  <script>
+    // break
+    let i = 0;
+    for(; i < 5;){
+      document.write(`${i++}번째 안녕하세요<br>`);
+      if (i == 3) {
+        break;
+      }
+    }
+
+    document.write("<hr>");
+    // continue
+    for ( let j= 0; j< 5; j++){
+      if (j == 3){
+        continue;
+      }
+      document.write(`${j}번째 안녕하세요<br>`);
+    }  
+    document.write("<hr>");
+    // while문
+    let k = 0;
+    while (k < 10){
+      document.write(`${k}번째 안녕하세요<br>`);
+      k++; 
+      if ( k == 5){
+        break;
+    }
+  }
+  document.write("<hr>");
+
+    // 문제 1) 1~9까지 합을 구하되, 3의 배수를 제외한 합을 구하세요.
+  let sum3 = 0;
+  for (let i = 1; i < 10; i++){  
+    if ( i % 3 == 0 ){
+      continue;
+    }
+    sum3 += i
+  }
+  document.write(`${sum3}<hr>`);
+    // 문제 2) 1~100까지의 짝수합만을 구하세요.(continue이용)
+   let esum = 0;
+   for (let i = 1; i <= 100; i++ ){
+  
+    if( i % 2 == 1){
+      continue;
+    } 
+    esum += i 
+   }
+   document.write(`${esum}<hr>`);
+    // 문제 3) 1부터 누적합을 구하되, 몇까지 더해야 누적합이 1000이 넘어가는지 출력.
+    let sum = 0;
+    for (let i = 1; i < 46; i++){
+      sum += i
+    }
+    document.write(`${sum}<hr>`);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

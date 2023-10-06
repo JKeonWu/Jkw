@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오름차순 정렬</title>
+  <script>
+    // 칠판에 설명한 알고리즘을 잘 기억해서,
+    // 1 ~ 100 까지의 랜덤한 수 10개를 배열에 넣어두고,
+    // 오름차순으로 정렬하고
+    // 정렬 전과, 정렬 후의 배열을 각각 출력하세요.
+    let arr = new Array(10);
+
+    for(let i = 0; i < arr.length; i++){
+      arr[i] = Math.floor(Math.random() * 100 + 1 );
+    }
+
+    // 테이블 출력
+    let table = "<table border='1'><tr>"
+      for (let i = 0; i < arr.length; i++ ){
+        table += `<td> ${arr[i]} </td>`;
+      }
+      table += "</tr></table>";
+      document.write("정렬 전 배열")
+      document.write(table);
+
+     // 정렬
+    for (let i = 0; i < arr.length - 1; i++) {   // -1번째까지가서 비교
+     // i = 0, 1 ,2 ... , 8
+     for(let j = i + 1; j < arr.length; j++){
+        // 오름차순 정렬 
+        if (arr[i] > arr[j]) {
+          let tmp = arr[j];            // 옮겨담으려면 빈그릇 생성
+          arr[j] = arr[i];
+          arr[i] = tmp;                
+        }
+     } 
+    }
+     console.log(arr);
+     let sortedTable = "<table border='1'><tr>"
+      for (let i = 0; i < arr.length; i++ ){
+        sortedTable += `<td> ${arr[i]} </td>`;
+      }
+      sortedTable += "</tr></table>";
+      document.write("정렬 후 배열")
+      document.write(sortedTable);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

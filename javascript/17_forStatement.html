@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for 반복문</title>
+  <script>
+     for (let i = 1; i <= 5; i++) {
+          document.write(`${i}번째 안녕하세요 <br />`);
+    }
+    document.write("<hr />");
+    // 1) 인덱스를 2씩 증가
+    for (let i = 1; i <= 5; i += 2) {
+          document.write(`${i}번째 안녕하세요 <br />`);
+    }
+    
+    // 2) ul태그 안에 li태그가 4번이 나오도록 , li태그 안에 1, 2, 3, 4가 들어가도록 만드세요.
+    let output = "<ul>";
+      for(let i = 0; i < 4; i++ ) {
+          output += `<li>${i+1}</li>`; 
+   }
+   output += "</ul>";
+   document.write(output);
+   document.write("<hr />");
+
+
+    // 3) 4행 3열 테이블을 만드세요 (for문 1번만 사용), td태그 안에 1씩 증가하는 숫자를 넣으세요.
+    let tableOutput = "<table>";
+
+    // for(let i = 0; i <table 4 ; i++  ){
+    //   tableOutput += `<tr><td>${i * 3 + 1}</td><td>${i * 3 +2}</td><td>${i * 3 +3}</td></tr>`; 
+    // }
+    let cnt = 1;
+    for (let i = 0; i < 4; i++)
+      tableOutput += `<tr><td>${cnt++}</td><td>${cnt++}</td><td>${cnt++}</td></tr>`; 
+    tableOutput += `</table>`;
+    document.write(tableOutput);
+
+    // 4) 1~100까지의 누적 합을 구하시오. +출력
+    // 범위를 적게잡고 일단 검산
+    // sum = sum + i;   sum += i; 
+    let sum = 0;
+    for (let i = 1; i <= 100; i++ ) {
+      sum += i;
+    } 
+    document.write(`${sum}<br>`);
+
+    // 5) 1~100까지의 짝수합, 홀수합을 구하고 출력하세요.
+    let esum = 0;
+    let osum = 0;
+
+    for (let i = 2; i <= 100; i = i +2 ) {
+      esum += i
+    } 
+    document.write(`${esum}<br>`);
+    for (let i = 1; i < 100; i = i +2) {
+      osum += i
+    } 
+     document.write(`${osum}<br>`);
+
+    // if(i % 2 == 0){
+    //   // 짝수인경우
+    //   evenSum2 += i;
+    // } else {
+    //   // 홀수인경우
+    //   oddSum2 += i;
+    // }
+    // document.write(` 1~100 까지의 홀수 합은 : ${oddSum2}입니다. </br>`)
+    // document.write(` 1~100 까지의 짝수 합은 : ${evenSum2}입니다. </br>`)
+         
+    // 6) 유저에게 단을 입력받아서, 해당하는 단의 구구단을 출력하세요.
+     let dan = Number(window.prompt("단을 입력하세요.."));
+
+     for (let i = 1;  i < 10; i++) {
+     document.write(`${dan} * ${i} = ${dan * i} < br />` );
+     }
+
+  </script>
+</head>
+<body>
+  <!-- <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul> -->
+
+  <!-- <table border="1">
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>11</td>
+      <td>12</td>
+    </tr>
+  </table> -->
+
+</body>
+</html>

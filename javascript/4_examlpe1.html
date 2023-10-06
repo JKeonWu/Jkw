@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로그래밍 연습1</title>
+  <script>
+    // 문제 1) 밑변가 3cm, 높이가 6cm인 직사각형의 넓이를 구해서, 출력하는 프로그램을 만드세요.
+    // 1) (입력) 밑변 값과 높이 값을 변수에 저장
+       let width = 3,
+           height = 6,
+           area;
+       console.log(width, height, area);
+    // 2) (처리) 넓이 = 밑변 * 높이 
+       area = width * height;
+       console.log(area);
+    // 3) (출력) 화면에 넓이 값을 출력 
+       document.write(
+        "<div>밑변이 3cm, 높이가 6cm인 직사각형의 넓이" + area + "cm<sup>2</sub></div>"
+          );
+
+    // 문제 2) 반지름이 5cm인 원의 넓이를 구하고, 출력하세요.
+    // 1) 반지름과 넓이 변수 선언
+        let radius = 5;
+        let circleArea;
+        const PI = 3.141592;
+        
+    // 2) 원의 넓이 공식 = 원주율(pi) * 반지름^2
+        // circleArea = PI * radius * radius;
+        circleArea = Math.PI * radius * radius;
+        console.log(radius,circleArea);
+       
+    // 3) 출력하자   
+        document.write(
+          "<div> 반지름이 5cm인 원의 넓이 (&pi;*r<sup>2</sub>)는 "  + circleArea + "</div> " 
+          );
+    // 문제 3)
+    // num1 이라는 변수에 3이 대입되어 있고,
+    // num2 라는 변수는 5가 대입되어 있다.
+    // 두 변수의 값을 바꾸어 저장되도록 하고, 출력 하세요.
+    // 1) num1에 3을 대입, num2에 5를 대입한다.
+        let num1 = 3,
+            num2 = 5;
+        let tmp = 0;
+        document.write("<div> 처음의 두수는" + num1 + "과" + num2 + "입니다. <div>");
+
+        tmp = num1;
+        console.log(num1,num2,tmp);
+        num1 = num2;
+        console.log(num1,num2,tmp);
+        num2 = tmp;
+        console.log(num1,num2,tmp);
+        document.write
+        ("<div> 자리가 바뀐 두수는" + num1 + "과" + num2 + "입니다. </div>");
+        
+        
+
+     //문제 4)
+     // 밑변과 높이를 유저에게 입력받아, 삼각형의 넓이를 구해, 출력하는 프로그램을 만드세요.
+     //
+     let base = 0,
+        triangleHeight = 0 ,
+        triangleArea = 0;
+        //2 유저에게 입력받기
+      base =  window.prompt("밑변을 입력하세요...");
+      triangleHeight = window.prompt("높이를 입력하세요..");
+      console.log(base,triangleHeight);
+      // 3) 삼각형의 넓이 = 밑변 * 높이 / 2
+      triangleArea = (base * triangleHeight) / 2;
+      console.log(triangleArea);
+
+      document.write(
+        "<div> 밑변은" + 
+        base + 
+        "이고, 높이는" + 
+        triangleHeight +
+         "인 삼각형의 넓이는 " +
+          triangleArea + 
+          "</div>");
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = new Array();
+        let element = null;
+
+        let std_num = prompt("학생 수 입력");
+        let sub = prompt("과목 수 입력");
+
+        std_num = Number(std_num);
+        sub = Number(sub);
+
+        function make_arr(){
+            for(let i = 0; i <= std_num; i++) {
+                element = new Array();
+                for(let j = 0; j <= sub +2; j++) {
+                    element.push(null);
+                }
+                
+                
+                
+                for(let j = 1; j <= sub; j++) {
+                    arr[0][j] = prompt("과목 명 입력");
+                }
+                arr[0][sub + 1] = "총합";
+                arr[0][sub + 2] = "평균";
+
+                for(let i = 1; i <= std_num; i++) {
+                    arr[i][0] = i + "번학생";
+                }
+            }
+        }
+            function input_std_score() {
+            for(let i = 1; i <= std_num; i++) {
+              for(let j = 1; j <= sub; j++) {              
+                let score = prompt(arr[i][0] + arr[0][j] + "성적 입력" );
+                score = Number(score);
+                arr[i][j] = score;
+              }
+            }
+        }
+        function process_std_score() {
+            for(let i = 1; i <= std_num; i++) {
+                let sum = 0;
+                for(let j = 1; j <= sub; j++) {
+                    sum = sum + arr[i][j];
+                }
+                arr[i][sub + 1] = sum;
+                let avg = sum / sub;
+                arr[i][sub + 2] = avg.toFixed(2);
+            }
+        }
+
+        function print_std_score() {
+            let table = "<table border = '1'>";
+            for(let i = 0; i <= std_num; i++) {
+                table += "<tr>";
+                    for(let j = 0; j <= sub + 2; j++) {
+                        table += "<td>";
+                        table += arr[i][j];
+                        table += "</td>";
+                    }
+                    table += "</tr>";
+            }    
+                    table += "</table>;"
+                    document.write(table);
+        }
+
+        make_arr();
+        input_std_score();
+        process_std_score();
+        print_std_score();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

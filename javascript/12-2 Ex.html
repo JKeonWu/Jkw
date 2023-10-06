@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 유저에게 키(cm)와 체중(kg)을 입력받아서 bmi 지수와 저체중,정상,과체중,비만인지 출력하세요
+    let height =Number( window.prompt("키를 입력하세요"));
+    let weight =Number( window.prompt("몸무게를 입력하세요"))
+    
+    
+    console.log(height,weight);
+    let bmi = (weight / ((height / 100) ** 2));
+    bmi = Math.floor(weight / ((height / 100) ** 2));
+    let grade = "";
+    console.log(bmi)
+    
+
+    if(bmi<18.5){
+      grade = "져체중"
+    }else if(bmi<18.5 , bmi>23) {
+      grade = "정상"
+    }else if(bmi<23, bmi>25) {
+      grade = "과체중"
+    }else if (bmi<25) {
+      grade = "비만";
+    }
+    
+    document.write(`키 : ${height},몸무게 : ${weight},  BMI지수${bmi}, 비만도 결과 : ${grade}`);
+    
+
+    // switch(bmi) {
+    //   case"범위":
+    //   bmi += ": BMI지수 저체중 ";
+    //   break;
+    //   case"범위":
+    //   bmi += ":BMI지수 정상";
+    //   break;
+    //   case"범위":
+    //   bmi += ": BMI지수 과체중";
+    //   break;
+    //   case"범위":
+    //   bmi += ": BMI지수 비만";
+    //   break;
+    // }
+  </script>
+  
+</head>
+<body>
+  
+</body>
+</html>

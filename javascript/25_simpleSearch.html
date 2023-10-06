@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>탐색 (데이터 탐색): 순차 탐색 </title>
+  <script>
+    // 방 50개 짜리 1차원 배열을 만들고, 그 방안에 
+    // 1~200까지의 랜덤한 수를 넣고,
+    // 유저가 어떤 수를 입력했을 때, 유저가 입력한 값이 있다면, 입력한 수가 있는 곳을 알려주고
+    // 없다면, "찾지 못했다!"라고 출력하는 프로그램을 작성.
+
+    // 1)
+    let data = new Array(50);
+
+    console.log(Math.floor(Math.random() * 200) + 1);
+    for(let i = 0; i < data.length; i++ ) {
+      data[i] = (Math.floor(Math.random() * 200) + 1);
+  
+    }
+    console.log(data);
+
+    // 1-1) data를 table로 출력하기 (5행 10열)
+      let table = "<table border='1'>";
+        let cnt = 0;
+        for(let r = 0; r < 5;  r++) {
+          table += "<tr>";
+            for (let c = 0; c < 10; c++){
+              table += `<td>${data[cnt++]}</td>`;
+            }
+            table += "</tr>";
+        }
+        table += "</table>";
+        document.write(table);
+      
+      
+      
+    // 2) 순차 탐색
+
+    let findNum = Number( window.prompt("찾을 숫자를 입력하세요."));
+    let isFind = false; // 못찾는 경우 (flag변수)
+    let result = "";   
+    for ( let i = 0; i < data.length; i++){
+      if(data[i] === findNum ){
+        // 찾았다!!!
+        result += i + ", ";
+        isFind = true;
+      } 
+    }
+    // 3) 출력
+    if(isFind == false ) {
+      document.write(`${findNum}은 찾지 못했습니다!`);
+    } else {
+      // 찾은 경우 찾은 수에 노란색을 입혀보자
+      document.write(`${findNum}은 ${result}번째 있습니다.`);
+      let tds = document.getElementsByTagName("td");
+      console.log(tds[0].innerHTML);
+      for (item of tds) {
+        console.log(item);
+        if( findNum == item.innerHTML) {
+          item.style.backgroundColor = "yellow";
+          item.innerHTML = "★" + findNum;
+        }
+      }
+    }
+
+    
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

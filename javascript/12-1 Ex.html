@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘 저녁에 뭐먹지?</title>
+  <script>
+    // 추천 메뉴를 출력하는 프로그램 작성
+    // 1부터 7까지 랜덤한 수를 출력하고, 그 수가 
+    // 1: 짜장면 2: 김치찌개 3:돈까스 4: 햄버거 5: 떡볶이 6: 쌀국수 7: 라면
+    window.onload = function(){
+        // 현재 웹 문서가 로딩이 완료되면 (태그가 만들어지면) 
+    
+    // 1) 변수 선언 & 랜덤한 수를 구한다.
+    let randNum = 0;
+    let foodName = "";
+    let foodImg = "";
+    // randNum = Math.random() // 0이상 1미만의 실수
+    // randNum = Math.random() * 7 // 0이상 7미만의 실수
+    // randNum = Math.random() * 7 + 1 // 1이상 8미만의 실수
+    randNum = Math.floor(Math.random() * 7 + 1); 
+    console.log(randNum);
+
+    // 2) 1번에서 나온 수가 어떤 음식인지 비교판단(Switch문이용)
+    switch(randNum) {
+      case 1:
+          foodName = "짜장면";
+          foodImg = "image/1.webp";
+          break;
+      case 2:    
+          foodName = "김치찌개";
+          foodImg = "image/2.webp";
+          break;
+      case 3:    
+          foodName = "돈까스";
+          foodImg = "image/3.webp";
+          break;
+      case 4:
+          foodName = "햄버거";
+          foodImg = "image/4.webp";
+          break;
+      case 5:
+          foodName = "떡볶이"; 
+          foodImg = "image/5.webp";
+          break;
+      case 6:
+          foodName = "쌀국수"; 
+          foodImg = "image/6.jpg";
+          break;
+      default:
+          foodName = "라면"; 
+          foodImg = "image/7.jpg";
+          break;
+    }
+
+    // 3) 출력
+    console.log(document.getElementById("foodName"));
+    document.getElementById("foodName").innerHTML = foodName;
+    console.log(document.getElementById("foodImg"));
+    document.getElementById("foodImg").src = foodImg;
+  }  
+  </script>
+</head>
+<body>
+  <h1 class="titile">오늘의 추천 메뉴</h1>
+  <div id="foodName">음식이름</div>
+  <div class="food" >
+      <img src="" id="foodImg" alt="">
+  </div>
+  <script>
+    // console.log(document.getElementById("foodName"));
+  </script>
+</body>
+</html>

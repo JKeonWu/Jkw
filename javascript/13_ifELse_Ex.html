@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI 계산</title>
+  <script>
+    // 유저에게 키(cm)와 체중(kg)을 입력받아서 
+    // bmi 지수와 저체중,정상,과체중,비만인지 출력하세요
+    // 공식 : 체질량지수는 ** 자신의 몸무게(kg)를 키의 제곱(m)으로 나눈 값
+
+    //1) 입력단계 (변수준비)
+    let height = Number(window.prompt("키를 입력하세요.(cm)"));
+    let weight = Number(window.prompt("몸무게를 입력하세요.(kg)"));
+    // 키의 단위를 cm => meter로 변환
+    // height = height / 100; 
+     height /= 100 // height를 100으로 나눠서 다시 height에 넣어준다는뜻
+     // result += "새로운 결과"
+
+    let bmi = weight / height / height;
+    bmi = Math.round(bmi *100)/ 100;
+    console.log(height, weight, bmi);
+
+    let result = ""; // 결과를 담을 변수를 미리제작
+    //2) 처리단계
+    if (bmi <= 18.5) {
+      // document.write("저체중");
+      result = "저체중";
+    } else if (bmi > 18.5 && bmi <= 23) {
+      // document.write("정상");
+      result = "정상";
+    } else if (bmi > 23 && bmi<= 25) {
+      result = "과체중"
+    } else {
+      result = "비만"
+    }
+
+    //3) 출력
+    // bmi값을 소숫점 둘째 자리 까지만 보여주자.
+
+    document.write(`bmi 지수 : ${bmi}, 결과는 : ${result}입니다`);
+
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 문자열 객체의 생성
+    let str = new String("대한민국");
+    console.log(str);
+    console.log(typeof str);
+    console.log(str[0] + str[1] + str[3]);
+    // str[1] = "핸";   // 수정 불가
+    console.log(str); 
+
+    let str1 = "대한민국";
+    console.log(str1);
+    console.log(typeof str1);
+    console.log(str1[1]);
+
+    str = "대한민국 우리나라 좋은나라";
+    document.write(str + "<br>");
+    document.write(str.charAt(2) + "<br>");
+    document.write(str.concat(" ", "좋아요" + "<br>"));
+    // document.write(str.concat( " 좋아요")); // 공백은 한 칸만 적용이 된다.
+
+    // indexOf : 일치하는 첫번째 인덱스를 반환, 없으면 -1 반환, 왼쪽부터 검색
+    document.write(str.indexOf("나") + "<br>"); // 7
+    document.write(str.indexOf("나", 8) + "<br>") ; // 12, str.indexOf(searchValue[, fromIndex])
+    document.write(str.indexOf("나다") + "<br>");  // 찾는값이 없으니 -1 반환
+    
+    // lastIndexOf() : 오른쪽부터 검색 (인덱스는 0번째 부터의 인덱스값을 반환)
+    document.write(str.lastIndexOf("민국") + "<br>"); // 2 
+    document.write(str.lastIndexOf("나") + "<br>"); // 12
+    
+    // substr() : str.substr(start[, length])
+    document.write(str.substr(5,4) + "<br>"); // 우리나라
+    document.write(str.substr(10,2) + "<br>"); // 좋은
+
+    // str.substring(indexStart[, indexEnd]) : 마지막 인덱스 (포함하지 않음.)
+    document.write(str.substring(5,9)+ "<br>"); // 우리나라
+
+    let statement = "I am a student";
+    document.write(statement.toLocaleLowerCase()+ "<br>"); // 소문자변환, i am a student
+    document.write(statement.toLocaleUpperCase()+ "<br>"); // 대문자변환, I AM A STUDENT
+
+    // statement 에서 student라는 단어를 추출해서 대문자로 변환하여 출력하세요.
+    document.write(statement.substring(7).toLocaleUpperCase()+ "<br>");
+    document.write(statement.substr(7.7).toLocaleUpperCase()+ "<br>");
+
+    document.write(statement.substr(statement.indexOf("student"),"student".length)
+    .toLocaleUpperCase()+ "<br>");
+
+    let statement2 = " 홍 길 동 ";
+    document.write(statement2 + "<br>");
+    console.log(statement2.trim()); // 앞 뒤 공백 제거
+    // 그렇다면, 가운데 있는 공백은 어떻게 제거 할까요?
+    console.log("홍길동" === "홍 길 동"); // false
+    console.log(statement2.replaceAll(" ",""));
+    console.log(statement2.split(" ").join(""));
+    
+
+    // 정규식 (Regular Expression)
+    console.log(statement2.replace(/\s/g, "" ));
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

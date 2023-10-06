@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최대값, 최소값 구하기 </title>
+  <script>
+    // 1 ~ 100까지의 랜덤한 수 10개를 배열에 넣어두고 
+    // 그 랜덤 수들 중에 max(최대값), min(최소값)을 각각 구해 출력하세요.
+    // (max값은 빨간색, min값은 파란색)
+    
+    let arr = new Array(10);
+    
+    for (let i = 0; i < arr.length; i++){
+      arr[i] = Math.floor(Math.random() * 100 + 1);
+    }
+    console.log(arr);
+    // min, max 값 구하기
+    let min = arr[0], max = arr[0];
+
+    for(let i= 1; i < arr.length; i++ ){
+      if (arr[1] > max) {
+        max = arr[1];
+      }
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+
+    }
+    document.write(`최대값은 ${max}, 최소값은 ${min}` );
+    
+    let table = "<table boder='1'><tr>";
+      for(let i = 0; i < arr.length; i++) {
+        table += `<td> ${arr[i]} </td>` ;
+      }
+      table += "</tr></table>";
+      document.write(table);
+
+      for(let item of document.getElementsByTagName("td")) {
+        if (item.innerHTML == max) {
+          item.style.backgroundColor = "pink";
+        }
+        if (item.innerHTML == min) {
+          item.style.backgroundColor = "lightblue";
+        }
+      }
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

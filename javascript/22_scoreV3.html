@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1차원 배열을 이용한 성적표</title>
+  <script>
+    // 사용자에게 학생 1명의 이름, 국어, 영어, 수학 점수를 입력받아,
+    // 총점, 평균, 학점을 구해서 테이블로 출력하는 프로그램을 작성하세요.
+    // (배열 이용)
+    // 단, 평균이 90점 이상이고 100이하이면 학점이 A,
+    // 평균이 80점 이상이고 90점 미만이면 B,
+    // 평균이 70점 이상이고 80점 미만이면 C,
+    // 평균이 60점 이상이고 70점 미만이면 D,
+    // 평균이 60점 미만이면 F
+    let student = new Array(7);
+    let lengend = ["이름", "국어", "영어", "수학", "총점", "평균", "학점"];
+    for (let i = 0; i < 4; i++){
+      student[i] = window.prompt(`${lengend[i]}데이터를 입력하세요` );
+    }
+    console.log(student);
+
+    // 총점, 평균, 학점 계산 
+    student[4] = Number(student[1]) + Number(student[2]) + Number(student[3] );
+    student[5] = Math.round( (student[4] / 3) * 100 / 100 ) ;
+    console.log(student);
+
+    switch (Math.floor(student[5] / 10)) {
+        case 10 : 
+          // grade = "A";
+          // break;
+        case 9 : 
+          student[6] = "A"
+          break;
+        case 8 :
+          student[6] = "B"
+          break;
+        case 7 :
+          student[6] = "C"
+          break;
+        case 6 :
+          student[6] = "D"
+          break;
+        default: 
+          student[6] = "F";  
+      }
+
+      console.log(student);
+
+      // 테이블에 출력하기
+      let output = "<table border='1'><tr>"
+        for (let i = 0; i <student.length; i++){
+          output += `<th> ${lengend[i]} </th> `;
+        }
+        output += "</tr><tr>";
+        
+        for(let i = 0; i < student.length; i++){
+          output += `<td>${student[i]} </td>` ;
+        }
+        output += "</tr></table)";
+       window.onload = function(){
+
+        document.getElementById("output").innerHTML = output; 
+      }; // window.onload = 로딩이 다되고 이걸 실행해라
+  </script>
+  
+</head>
+<body>
+  <h1 class="title" >성적표</h1>
+  <div id="output" ></div>
+  <table class="score" >
+    <tr>
+      <td>이름</td>
+      <td>국어</td>
+      <td>영어</td>
+      <td>수학</td>
+      <td>총점</td>
+      <td>평균</td>
+      <td>학점</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  
+</body>
+</html>

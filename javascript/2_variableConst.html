@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수와 상수</title>
+  <script>
+      // 변수
+      let name;
+      console.log(name); // undefined : 변수의 값이 대입되지 않은 상태
+      name = "둘리";
+      console.log(name);
+      name = "도우너";
+      console.log(name);
+
+      // let name = "마이콜"; // Identifier 'name' has already been declared (중복 선언)
+      // consloe.log(name); // 위에서 에러 발생으로 실행 안됨
+      // let name1 = "마이콜";
+      //  console.log(name1);
+
+      // var 변수 선언
+      var num = 1;
+      console.log(num);
+
+      var num = 1; // var의 문제점 (1) 중복 선언해도 에러가 나지 않는다.
+      console.log(num);
+
+      // var의 문제점 (2) 변수의 범위(scope) {}블럭 밖에서도 출력
+      {
+        let name1 = "또치";
+        console.log(name1);
+
+        //
+        var a = 4;
+        console.log(a);
+      }
+      // console.log(name1); 
+      console.log(a);
+
+      let name1= "길동";
+      // 상수
+      const here = "아이언맨";
+      console.log(here); 
+      
+      // here = "캡틴아메리카"; // Assignment to constant variable.
+      
+      let $name = "달러로 시작하는 이름";
+      console.log($name);
+      
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

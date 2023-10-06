@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <script>
+      // 사용자에게 이름,국어,영어,수학 점수를 입력받아 
+      // 총점,평균을 구하고, 학점을 구해 출력하는 프로그램을 만들어보자.
+      // 단, 평균이 90점 이상 100이하이면 A,
+      // 단, 평균이 80점 이상이고 90점 미만이면 B,
+      //     평균이 70점 이상이고 80점 미만이면 C,
+      //     평균이 60점 이상이고 70점 미만이면 D,
+      //     평균이 60점 미만이면 F
+      // 1) 이름, 점수 입력받기
+      let stuName = window.prompt("이름을 입력하세요");
+      let kor = Number(window.prompt("국어 점수를 입력하세요", "80"));
+      let eng = Number(window.prompt("영어 점수를 입력하세요", "90"));
+      let math = Number(window.prompt("수학 점수를 입력하세요", "70"));
+      
+      console.log(stuName, kor, eng, math);
+      // 2) 총점과 평균을 구한다.
+      let tot = kor + eng + math;
+      let avg = tot / 3;
+      console.log(tot,avg);
+
+      document.write(`이름 : ${stuName}, 총점 : ${tot}점, 평균${avg}점`);
+
+      // 3) 학점 계산
+      let grade = "";
+
+      // if(avg >= 90 && avg <= 100) {
+      //    grade = "A";
+      // } else if (avg >= 80 && avg < 90) {
+      //    grade = "B";
+      // } else if (avg >= 70 && avg <80) {
+      //    grade = "C";
+      // } else if (avg >= 60 && avg <70) {
+      //    grade = "D";
+      // } else {
+      //    grade = "F";
+      // } 
+      let A = avg >= 90 && avg <= 100
+      let B = avg >= 80 && avg < 90
+      let C = avg >= 70 && avg <80
+      let D = avg >= 70 && avg <80
+      // avg <=90 && avg <=100 : A
+      // 90점대 10의 자리 9 , 80점대 10의자리 8
+      // 90 91 95 100 등등
+      
+
+      switch (Math.floor(avg / 10)) {
+        case 10 : 
+          // grade = "A";
+          // break;
+        case 9 : 
+          grade = "A"
+          break;
+        case 8 :
+          grade = "B"
+          break;
+        case 7 :
+          grade = "C"
+          break;
+        case 6 :
+          grade = "D"
+          break;
+        default: 
+          grade = "F";  
+      }
+
+
+      console.log(tot, avg, grade);
+      // 4) 학점을 출력 (table태그를 사용하여 출력한다.)
+
+      // 행2개 칼럼 7개
+      document.write(`<h1> class="title">성적표<h1>`)
+      let output = ` <table class="socre" > <tr>
+      <td>이름</td>
+      <td>국어</td>
+      <td>영어</td>
+      <td>수학</td>
+      <td>총점</td>
+      <td>평균</td>
+      <td>학점</td>
+    </tr><tr>
+         <td>${stuName}</td>
+         <td>${kor}</td>
+         <td>${eng}</td>
+         <td>${math}</td>
+         <td>${tot}</td>
+         <td>${avg}</td>
+         <td>${grade}</td>
+    </tr></table>`  
+      document.write(output);
+    </script>
+    <style>
+        .score, tr, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+    </style> 
+</head>
+<body>
+  <h1 class="title">성 적 표</h1>
+  <!-- <table class="socre" >
+    <tr>
+      <td>이름</td>
+      <td>국어</td>
+      <td>영어</td>
+      <td>수학</td>
+      <td>총점</td>
+      <td>평균</td>
+      <td>학점</td>
+    </tr>
+    <tr>
+      <td>홍길동</td>
+      <td>90</td>
+      <td>80</td>
+      <td>70</td>
+      <td>240</td>
+      <td>80</td>
+      <td>B</td>
+    </tr>
+   </table> --> 
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>if ~ Else 문</title>
+  <script>
+    // 사용자에게 숫자를 입력받아 숫자이면 "숫자"라고 출력하는 프로그램 작성
+    // 1) 사용자에게 입력 받는다
+    let data = window.prompt("숫자를 입력하세요", "0");
+    console.log(data);
+    // console.log(isFinite(1/0));
+
+    // 2) 입력한 값이 숫자인지 아닌지 판별
+    let result = ""; // 빈문자로 초기화시켜놓고
+    if(isFinite(data)) {
+        // data가 유한숫자이면 수행할 문장
+        result = "숫자";
+        // document.write(data + "는 숫자입니다.");
+    } else {
+        result = "문자";
+        // document.write(data + "는 문자입니다.");
+    } 
+
+    document.write(`${data}는 ${result}입니다.`);
+    // 3) 끝
+    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 연습문제)
+    // 사용자에게 날짜를 입력받아, 현재 시간이 입력받은 날짜로부터 
+    // 얼마나 지났는지 (며칠) 계산을 해보자.
+    // 1) 사용자에게 날짜 입력받기 (input type = date)
+    function calDate(){
+    console.log(document.getElementsByTagName("input")[0].value); // 2023-10-05 (String)
+    let usersDate =new Date (document.getElementsByTagName("input")[0].value); // string타입의 날짜를 넣어줘서, 날짜 객체를 생성
+    console.log(typeof usersDate); 
+    
+    let now = new Date();
+    console.log(now.getTime()); // 날짜 객체의 getTime()메서드로 타임스탬프 값
+    console.log(Date.now()); // 현재날짜시간의 타임스탬프 값
+
+    // 두 날짜의 차이 (timestamp)
+    let tmp = now.getTime() - usersDate.getTime();
+    console.log(tmp);
+    console.log(now - usersDate);
+
+    // 
+    let result =Math.floor (tmp / 1000 / 60 / 60 / 24 ); // 밀리초 -> 일(day)
+    console.log(result);  
+      
+    document.getElementById("result").innerHTML = result + "일 지났습니다.";
+
+    let futureDate100 = now.getTime() + 100 * 24 * 60 * 60 * 1000; // 1970년 1월 1일부터 100일 후까지의 timestamp 값
+    console.log(futureDate100);
+    console.log(new Date(futureDate100));
+   }
+
+    
+    
+  </script>
+</head>
+<body>
+  <div id = "calendar">
+    지정일을 입력하고, 확인 버튼을 누르세요.
+   <input type="date" >
+
+   <button onclick="calDate();">확인</button>
+  </div>
+  <div id="result"></div>
+</body>
+</html>
