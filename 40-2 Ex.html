@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+     <script>
+   //  연습문제) 
+   //  기념일을 입력받아서 100일,200일, 1년이 언제인지 날짜를 알려주는 프로그램을 만드세요.
+    
+   function calDate(){
+    console.log(document.getElementsByTagName("input")[0].value);
+   let userBirth = new Date(document.getElementsByTagName("input")[0].value);
+    console.log(typeof userBirth);
+
+    let now = new Date();
+    console.log(now.getTime);
+    
+   }
+     </script>
+</head>
+<body>
+  <div id="calendar" >
+    <input type="date">
+    <button onclick="calDate()" >확인</button>
+  </div>
+  <div id="result" ></div>
+</body>
+</html>
