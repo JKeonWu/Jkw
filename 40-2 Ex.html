@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>기념일계산</title>
      <script>
    //  연습문제) 
    //  기념일을 입력받아서 100일,200일, 1년이 언제인지 날짜를 알려주는 프로그램을 만드세요.
@@ -14,15 +14,89 @@
     console.log(typeof userBirth);
 
     let now = new Date();
-    console.log(now.getTime);
+    console.log(now.getTime());
+    console.log(Date.now());
     
-   }
+    // 두 날짜의 차이
+    // let tmp =  userBirth.getTime() - now.getTime();
+    // console.log(tmp);
+    // console.log(now-userBirth);
+
+    // let result = Math.floor(tmp / (1000 * 60 * 60 * 24) +2 ) ;
+    // console.log(result);
+    
+    // document.getElementById("result").innerHTML = result + "일째.";
+
+    let day100 = new Date(userBirth.getTime() + 99* (1000 * 60 * 60 * 24)); 
+    console.log(day100);
+    let day100Date = day100.getFullYear() + "년" + (day100.getMonth() +1) + "월" + day100.getDate() + "일";
+    document.getElementById("date100").innerHTML = day100Date;
+
+    let day200 = new Date(userBirth.getTime() + 199* (1000 * 60 * 60 * 24)); 
+    let day200Date = day200.getFullYear() + "년" + (day200.getMonth() +1) + "월" + day200.getDate() + "일";
+    document.getElementById("date200").innerHTML = day200Date;
+
+    let day365 = new Date(userBirth.getTime() + 364 * (1000 * 60 * 60 * 24));
+    let day365Date = day365.getFullYear() + "년" + (day365.getMonth() +1) + "월" + day365.getDate() + "일";
+    document.getElementById("date365").innerHTML = day365Date;
+
+    
+    // let futureDate100 = now.getTime() + 100 * 24 * 60 * 60 * 1000; // 70년 1월1일부터 100일후까지 타임스탬프값
+    // console.log(futureDate100);
+    
+  }
+  
      </script>
+     <style>
+      
+      ul{
+        list-style-type: none;
+        margin: 0; padding: 0;
+        padding: 10px 10px;
+      }
+      .bar {
+        color: white;
+        padding: 10px;
+        background-color: black;
+      }
+     
+      .item-title{
+        border: 10px;
+        background-color: rgb(208, 208, 228);
+        width: 5%;
+      }
+      .item-date{
+        background-color: aqua;
+        width: 95%;
+      }
+      body {
+        margin: 5px
+      }
+      li {
+        float: left;
+        
+      }
+     </style>
 </head>
 <body>
   <div id="calendar" >
+    기념일을 입력하고 확인 버튼을 누르세요.
     <input type="date">
     <button onclick="calDate()" >확인</button>
+    <div class="bar" >기념일계산</div>
+    <div class="day"></div>
+    <ul>
+      <li class="item-title">100일</li>
+      <li class="item-date" id="date100">년 월 일 </li>
+    </ul>
+    <ul>
+      <li class="item-title">200일</li>
+      <li class="item-date"  id="date200">년 월 일 </li>
+    </ul>
+    <ul>
+      <li class="item-title">1년</li>
+      <li class="item-date" id="date365">년 월 일 </li>
+    </ul>
   </div>
   <div id="result" ></div>
 </body>

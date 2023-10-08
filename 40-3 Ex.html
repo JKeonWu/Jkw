@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //  연습문제) 
+        //  기념일을 입력받아서 100일,200일, 1년이 언제인지 날짜를 알려주는 프로그램을 만드세요.
+        let meetYear = document.getElementById("year");
+        let meetMonth = document.getElementById("month");
+        let meetDate = document.getElementById("date");
+        let current = document.getElementById("current");
+
+        let today = new Date();
+        document.write(today.getFullYear() +"년" +today.getMonth() +1 +"월" + today.getDate() + "일" +today.getHours()+"시" +today.getMinutes()+"분" ); 
+        
+        function butt(){
+          let meetDay = new Date(meetYear.value, meetMonth.value-1, meetDate.value);
+
+          let passed = today.getTime() - meetDay.getTime();
+          let passedDays = Math.floor(passed / (1000 * 60 * 60 * 24) );
+          
+          document.getElementById("passed").innerHTML ="날짜로는 ${passedDays} 일이 흐르고,";
+
+          meetDay.value = "";
+        };
+    </script>
+</head>
+<body>
+    <div id="container">
+     <h1>우리가 함께한 시간</h1>
+      <form>
+        <label><input type="text" id="year">년</label>
+        <label><input type="text" id="month">월</label>
+        <label><input type="text" id="date">일</label>
+        <button onclick="butt()">계산</button>
+      </form>
+
+      <div id="result" >
+        <p id="current"></p>
+        <p id="100days"></p>
+        <p id="200days"></p>
+        <p id="1years"></p>
+      </div>
+    </div>
+</body>
+</html>
