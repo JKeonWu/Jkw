@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>지역기반 관광정보</title>
+    <script>
+      // nKAvatpHVOvdcC6NS2wY4LjWeizwm%2FC%2BsqXrboy0%2Fs8FVqg0Hy8wrfQRbWIVQ1oLdSWlZyn5wQ8ue1HPvU89Aw%3D%3D
+      // 1~10 : page 1
+      // 11~20 : page 2      15/10 = 1 ....5
+      // ....
+      // 71~80 : page 8
+      // 7891~7898 : page790 <-- 789.8
+      let pageNo = 1;
+      let numOfRows = 10;
+      let totalCnt = 0;
+      let totalPage = 0;
+      let itemNo = 1;
+
+      $(function () {
+        getTourDate();
+
+        // 다음 페이지로 만들기
+        if (numOfRows != 0) {
+          if (totalCnt % numOfRows == 0) {
+            totalPage = parseInt(totalCnt / numOfRows);
+          } else {
+            totalPage = parseInt(totalCnt / numOfRows + 1);
+          }
+        } else {
+          numOfRows = 10;
+        }
+
+        $("#morePage").click(function () {
+          // alert("!"); // 잘되는지 확인
+          console.log(totalCnt);
+          console.log(totalPage);
+          // 다음페이지로 버튼 클릭시 실행
+          if (pageNo < totalPage) {
+            pageNo++;
+            console.log("pageNo: " + pageNo, ", totalPage : " + totalPage);
+            getTourDate();
+          } else if (pageNo == totalPage) {
+            alert("마지막 페이지 입니다");
+            // 더보기 버튼을 비활성화
+            $(this).attr("disabled", true);
+          }
+        });
+      });
+
+      function getTourDate() {
+        let baseUrl =
+          "http://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=nKAvatpHVOvdcC6NS2wY4LjWeizwm%2FC%2BsqXrboy0%2Fs8FVqg0Hy8wrfQRbWIVQ1oLdSWlZyn5wQ8ue1HPvU89Aw%3D%3D&&MobileApp=AppTest&MobileOS=ETC&arrange=A&areaCode=1&_type=json&contentTypeId=12&pageNo=" +
+          pageNo;
+
+        $(".loading").show();
+        $.ajax({
+          url: baseUrl,
+          type: "GET",
+          dataType: "json",
+          async: false, // 동기 통신 방식으로하겠다. (default : true 비동기)
+          success: function (data) {
+            // 통신이 성공하면 수행할 함수
+            console.log(data);
+            parsingJSON(data);
+          },
+          error: function () {},
+          complete: function () {
+            $(".loading").hide();
+          },
+        });
+      }
+
+      function parsingJSON(json) {
+        let tourAr = json.response.body.items.item;
+        console.log(tourAr);
+        totalCnt = Number(json.response.body.totalCount);
+        numOfRows = Number(json.response.body.numOfRows);
+
+        // 리스트로 출력
+        let output = `<ul class="list-group">`;
+
+        $.each(tourAr, function (i, tour) {
+          output += `<li class="list-group-item tour">`;
+          output += `<div>${itemNo++}</div>`;
+          output += `<a href="areaBasedDetail.html?contentid=${tour.contentid}"`;
+          if (tour.firstimage2 == "") {
+            // firstimage2 (썸네일)이 없는경우
+            output += `<div class='tourThumbnail'><img src='img/noimage.jpg'></div>`;
+          } else {
+            // 이미지가 있는경우
+            output += `<div class='tourThumbnail'><img src='${tour.firstimage2}'></div>`;
+          }
+
+          output += `<span class='tourTitel'>${tour.title}</span></a></li>`;
+        });
+        output += `</ul>`;
+        $("#tourInfo").append(output); // 페이지가 붙으면서 추가됨
+        $("#totalCnt").html("총 리스트 갯수:" + totalCnt);
+      }
+    </script>
+    <style>
+      .loading {
+        display: none;
+      }
+
+      .tour {
+        display: flex;
+        justify-content: left;
+        overflow: auto;
+      }
+      .tourThumbnail img {
+        width: 50px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="p-5 bg-primary text-white text-center">
+      <h1>TourAPI</h1>
+      <p>Resize this responsive page to see the effect!</p>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="./index.html">홈</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="areaBasedList.html">지역기반관광정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h2>tourAPI 지역기반 관광정보 리스트 페이지</h2>
+      <!-- 로딩되고 있음을 알림-->
+      <div class="loading"><img src="img/loading.gif" alt="" /></div>
+      <!-- 전체 게시물 수-->
+      <p id="totalCnt"></p>
+      <!-- 리스트 출력-->
+      <div id="tourInfo"></div>
+      <div class="">
+        <button type="button" class="btn btn-success" id="morePage">다음 페이지로</button>
+      </div>
+    </div>
+
+    <div class="mt-5 p-4 bg-dark text-white text-center">
+      <p>Footer</p>
+      <p>Goot5 All rights reserved</p>
+    </div>
+  </body>
+</html>

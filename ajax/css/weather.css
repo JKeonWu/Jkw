@@ -1,0 +1,48 @@
+img {
+  width: 30px;
+}
+.controller {
+  margin: 20px;
+}
+
+h1 {
+  padding: 10px 20px;
+}
+
+.selectUnit img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.selectUnits[type="radio"] {
+  opacity: 0;
+}
+
+.selectUnit {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.weatherInfo__weather {
+  width: 500px;
+  height: 150px;
+  line-height: 150px;
+}
+
+.controller {
+  display: flex;
+  padding: 10px 20px;
+}
+
+.selectUnits [type="radio"]:checked + img {
+  outline: 2px solid violet;
+}
+#map {
+  width: 300px;
+  height: 300px;
+  padding: 50px;
+}
+#iconImg {
+  width: 100px;
+}
