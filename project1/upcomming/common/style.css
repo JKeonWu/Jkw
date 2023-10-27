@@ -1,0 +1,55 @@
+.modal-body,
+.modal-content {
+  background-color: rgb(24, 24, 24);
+}
+#moreButton {
+  display: block;
+  margin: 0 auto;
+}
+.modal-container {
+  margin: 20px 30px;
+}
+.list-line {
+  display: flex;
+  margin: 30px 0;
+}
+.list-modal-card {
+  margin: 5px 15px;
+  border: none;
+  width: 25%;
+  height: 10%;
+}
+.card-img,
+.card-img-top {
+  /* height: 362px; */
+  height: 100%;
+  object-fit: fill;
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+  border-bottom-left-radius: var(--bs-card-inner-border-radius);
+  border-bottom-right-radius: var(--bs-card-inner-border-radius);
+}
+
+img {
+  object-fit: cover; /*이미지 비율 고정*/
+}
+.search-bar {
+  width: 30%;
+  background-color: rgb(50, 50, 50);
+  float: right;
+  margin-right: 15px;
+}
+.search-bar::placeholder {
+  color: white;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-title {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}

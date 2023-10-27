@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <link rel="stylesheet" href="min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
+
+    <link rel="stylesheet" href="common/style.css" />
+    <title>Document</title>
+    <script>
+      let pageNo = 1;
+      let results = 5;
+      let total_results = 0;
+      let totalPage = 1;
+
+      $(function () {
+        request(pageNo);
+        // 다음 페이지 만들기
+        if (results != 0) {
+          if (total_results % results == 0) {
+            totalPage = parseInt(total_results / results);
+          } else {
+            totalPage = parseInt(total_results / results + 1);
+          }
+        } else {
+          results = 5;
+        }
+
+        $("#moreButton").click(function () {
+          // alert("!");
+          console.log(total_results);
+          console.log(totalPage);
+          // 다음 페이지로 버튼클릭시 실행
+          if (pageNo < totalPage) {
+            pageNo++;
+            request(page);
+          } else if (pageNo == totalPage) {
+            $(this).attr("disabled", true);
+          }
+        });
+      });
+      // function getList(page) {
+      //   let url = `https://api.themoviedb.org/3/movie/upcoming?language=ko-KR&region=KR&page=${page}`;
+      // }
+
+      // https://api.themoviedb.org/3/movie/upcoming?language=ko-KR&region=KR&page=1
+      function request(page) {
+        $.ajax({
+          url: "https://api.themoviedb.org/3/movie/upcoming?language=ko&region=KR&page=" + page,
+          type: "GET",
+          dataType: "json",
+          async: false,
+
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNDQ3ZWUyZWNkZmMxMGNkMTkwYWE1ZjM1MjUyYjJiZiIsInN1YiI6IjY1MzIzNDc0NDgxMzgyMDBjNWUzZmFjMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VVxm6AdErul39epBHyu7zBz_HlJFSyb6UZ4WNgq4S_s",
+          },
+          success: function (data) {
+            parsingJSON(data);
+            console.log(data);
+          },
+          fail: function (data) {},
+          complete: function (data) {},
+        });
+      }
+
+      function parsingJSON(json) {
+        let results = json.results;
+        let movieimg = "";
+        let output = "";
+
+        console.log(results);
+        $(results).each(function (i, movie) {
+          let poster = results[i].poster_path;
+          let title = results[i].title;
+          if (i % 4 == 0) {
+            output += `<div class="list-line">`;
+          }
+          if (i % 4 <= 3) {
+            output += cardOutput(poster);
+          }
+          if (i % 4 == 3) {
+            output += `</div>`;
+          }
+          // let latest = results[i].release_date;
+          // totalResult.push(movie);
+          // function day() {
+          //   for (let i = 0; i < release_date.length; i++) {
+          //     latest.sort();
+          //     console.log(latest);
+          //   }
+          // }
+        });
+        // console.log(totalResult);
+        $(".modal-container").append(output);
+      }
+      function cardOutput(poster) {
+        return `<div class="card">
+        <a href="#" class="card-item"
+          ><img
+            class="card-img-top"
+            src="https://image.tmdb.org/t/p/w500${poster}"
+            alt="Card image"
+            style="width: 100%"
+        /></a>
+      </div>`;
+      }
+    </script>
+    <style>
+      img {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <h3>모달 테스트</h3>
+
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h1 class="modal-title">리스트 이름</h1>
+
+            <div class="modal-container">
+              <div style="height: 30px">
+                <input
+                  type="text"
+                  class="form-control search-bar"
+                  id="search"
+                  placeholder="검색어를 입력하세요"
+                  name="text"
+                />
+              </div>
+
+              <!-- 요기 list-line div를 js에서 추가해줘야함 -->
+            </div>
+
+            <button type="button" class="btn btn-secondary" id="moreButton">더보기</button>
+          </div>
+
+          <!-- Modal footer -->
+          <!-- <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
